@@ -4,7 +4,6 @@ derived/
 *log
 autoSaved*
 *.xlsx
-*.mat 
 *.blf 
 *.csv 
 *.txt
