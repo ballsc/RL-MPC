@@ -50,7 +50,7 @@ ax4 = nexttile;
 
 plot(total_r, steps_r, 'Color', '#642F6C', "DisplayName", "Right", 'LineWidth',2)
 hold on
-xlim([0 max(total_r)])
+xlim([0 300])
 %ylabel("Agent Steps","FontName","Times New Roman", FontSize=16)
 
 legend(FontSize=16)
@@ -72,7 +72,7 @@ ax5 = nexttile;
 
 plot(total_r, reward_r, 'Color', '#642F6C', "DisplayName","Right", 'LineWidth',2)
 hold on
-xlim([0 max(total_r)])
+xlim([0 300])
 %ylabel("Total Reward","FontName","Times New Roman", FontSize=16)
 grid on
 hold off
@@ -97,7 +97,7 @@ set(gca, 'FontSize', 20)
 
 plot(total_r, q_r, 'Color', '#642F6C', "DisplayName", "Right", 'LineWidth',2)
 hold on
-xlim([0 max(total_r)])
+xlim([0 300])
 %ylabel("Critic Q-Value","FontName","Times New Roman", FontSize=16)
 box on
 grid on
