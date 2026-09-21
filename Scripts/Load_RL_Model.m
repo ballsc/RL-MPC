@@ -1,5 +1,5 @@
-% simStepSize = .05;
-% initialVehicleVelocity = 8.9;
+simStepSize = .05;
+initialVehicleVelocity = 8.9;
 % 
 % load("RL_BusDefinitions.mat")
 % 
