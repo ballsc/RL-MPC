@@ -1,5 +1,6 @@
 % setup path
 addpath("Agents\", "Lane Scenarios\", "LCC\", "RL_Environments\", ...
-         "Scripts\", "Scripts\Visualization\", "Plants\", "DataDictionaries\")
+         "Scripts\", "Scripts\Visualization\", "Plants\", "DataDictionaries\", ...
+         "Scripts\Initialization\")
 
 % 

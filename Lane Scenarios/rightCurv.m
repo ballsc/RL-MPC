@@ -1,4 +1,4 @@
-function [scenario, sensor, allData] = rightCurv()
+function [scenario, roadCenters, sensor, allData] = rightCurv()
 %rightCurv - Returns sensor detections
 %    allData = rightCurv returns sensor detections in a structure
 %    with time for an internally defined scenario and sensor suite.
@@ -10,7 +10,7 @@ function [scenario, sensor, allData] = rightCurv()
 % Generated on: 18-Sep-2026 13:07:19
 
 % Create the drivingScenario object and ego car
-[scenario, egoVehicle] = createDrivingScenario;
+[scenario, roadCenters, egoVehicle] = createDrivingScenario;
 
 % Create all the sensors
 sensor = createSensor(scenario);
@@ -71,7 +71,7 @@ sensor = visionDetectionGenerator('SensorIndex', 1, ...
     'Intrinsics', cameraIntrinsics([800 799.999999999999],[320 240],[480 640]), ...
     'ActorProfiles', profiles);
 
-function [scenario, egoVehicle] = createDrivingScenario
+function [scenario, roadCenters, egoVehicle] = createDrivingScenario
 % createDrivingScenario Returns the drivingScenario defined in the Designer
 
 % Construct a drivingScenario object.
