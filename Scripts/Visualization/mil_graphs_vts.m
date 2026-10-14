@@ -42,47 +42,49 @@ steering_busyness_rl2 = sum(abs(diff(swAngleDeg_rl2)))/((time*20)/60);
 steering_busyness_rl2 = steering_busyness_rl2(end);
 
 %% Setup tiled plots
-tiledlayout(3,1,'TileSpacing', 'tight')
+% tiledlayout(3,1,'TileSpacing', 'tight')
 ax1 = nexttile;
 
 % Plot steering wheel degrees
 % plot(time,swAngleDeg_rl1, 'Color', '#642F6C', "DisplayName", "SAC+MPC 1", 'LineWidth',2)
-hold on
-plot(time,swAngleDeg_rl2, 'Color', '#642F6C', "DisplayName", "SAC+MPC 2", 'LineWidth',2)
-plot(time,swAngleDeg_mpc, "r", "DisplayName","MPC", 'LineWidth',2)
-
-ylabel("Steering Wheel Angle (degrees)","FontName","Times New Roman", FontSize=16)
-
-legend(FontSize=16)
-grid on
-hold off
-
-% Plot Lateral Jerk
-ax2 = nexttile;
-
-% plot(time,lateral_jerk_rl1,'Color', '#642F6C', "DisplayName","SAC+MPC 1", 'LineWidth',2)
-hold on
-plot(time,lateral_jerk_rl2,'Color', '#642F6C', "DisplayName","SAC+MPC 2", 'LineWidth',2)
-plot(time,lateral_jerk_mpc,"r", "DisplayName","MPC", 'LineWidth',2)
-
-ylabel("Lateral Jerk (m/s^3)","FontName","Times New Roman", FontSize=16)
-grid on
-hold off
+% hold on
+% plot(time,swAngleDeg_rl2, 'Color', '#642F6C', "DisplayName", "RL+MPC", 'LineWidth',2)
+% plot(time,swAngleDeg_mpc, "r", "DisplayName","MPC", 'LineWidth',2)
+% 
+% ylabel("Steering Wheel Angle (degrees)","FontName","Times New Roman", FontSize=16)
+% 
+% legend(FontSize=16)
+% grid on
+% hold off
+% 
+% % Plot Lateral Jerk
+% ax2 = nexttile;
+% 
+% % plot(time,lateral_jerk_rl1,'Color', '#642F6C', "DisplayName","SAC+MPC 1", 'LineWidth',2)
+% hold on
+% plot(time,lateral_jerk_rl2,'Color', '#642F6C', "DisplayName","RL+MPC", 'LineWidth',2)
+% plot(time,lateral_jerk_mpc,'Color', '#00A3AD', "DisplayName","MPC", 'LineWidth',2)
+% 
+% ylabel("Lateral Jerk (m/s^3)","FontName","Times New Roman", FontSize=16)
+% grid on
+% hold off
 
 % Plot Distance to Center Line
-ax3 = nexttile;
+% ax3 = nexttile;
 
-plot(time, midOffset_mpc, 'r', "DisplayName","S_a_n_g = 50", 'LineWidth',2)
+plot(time, midOffset_mpc, 'Color', '#00A3AD', "DisplayName","MPC", 'LineWidth',2)
 hold on
 % plot(time, midOffset_rl1, "Color", '#642F6C', "DisplayName","S_a_n_g = 25", 'LineWidth',2)
-plot(time, midOffset_rl2, "Color", '#642F6C', "DisplayName","S_a_n_g = 25", 'LineWidth',2)
+plot(time, midOffset_rl2, "Color", '#642F6C', "DisplayName","RL+MPC", 'LineWidth',2)
 
-ylabel("Offset From Center Line (m)","FontName","Times New Roman", FontSize=16)
+ylabel("Offset From Center Line (m)","FontName","Leelawadee UI", FontSize=18)
 box on
 grid on
 hold off
 
+legend(FontSize=18)
+
 % Setup X axis
-linkaxes([ax1, ax2, ax3], 'x');
-xlim(ax1,[0 400])
-xlabel(ax3,"Time (s)","FontName","Times New Roman", FontSize=16)
+% linkaxes([ax1, ax2, ax3], 'x');
+xlim(ax1,[0 150])
+xlabel(ax1,"Time (s)","FontName","Leelawadee UI", FontSize=18)

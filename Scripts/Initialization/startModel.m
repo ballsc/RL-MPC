@@ -9,11 +9,10 @@
 % initialAnggle - random angle corresponding to initialPosition
 % max_time - time until scenario will end, defaults to 100
 %
-model_name = "SAC_MPC_angle";
+model_name = "SAC_MPC_angle_reduced";
 simStepSize = 0.05;
-initialVehicleVelocity = 8.9;
 
-[initialPosition, initialAngle, scenario, max_time] = ResetFunction(initialVehicleVelocity);
+[initialPosition, initialAngle, scenario, max_time, initialVehicleVelocity] = ResetFunction();
 
 open("RL_Environments\"+model_name)
 

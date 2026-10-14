@@ -10,10 +10,12 @@ function [initialPosition, initialAngle, scenario, max_time, initialVehicleVeloc
     % set initial velocity between 25 and 35 mph
     initialVehicleVelocity = 6.7*rand + 8.9;
     
-    scenarios = {@small_OvalTrack, @large_OvalTrack, @longStraight, ...
-                @multiCurv, @leftCurv, @rightCurv};
+    % scenarios = {@small_OvalTrack, @large_OvalTrack, @longStraight, ...
+    %             @multiCurv, @leftCurv, @rightCurv};
     % scenarios = {@small_OvalTrack, @large_OvalTrack, ...
     %             @multiCurv, @leftCurv, @rightCurv};
+    % scenarios = {@multiCurv};
+    scenarios = {@large_OvalTrack, @leftCurv, @rightCurv};
 
     % find random scenario
     random_number = randi(numel(scenarios));
@@ -22,7 +24,8 @@ function [initialPosition, initialAngle, scenario, max_time, initialVehicleVeloc
     roadCenters = roadCenters(:, 1:2);
     d = diff(roadCenters, 1, 1);
     roadLength = sum(vecnorm(d, 2, 2));
-    max_time = 1.1*roadLength/initialVehicleVelocity;
+    % max_time = .9*roadLength/initialVehicleVelocity;
+    max_time = 40;
 
     % get lanes
     lanes = getLanes(scenario);
