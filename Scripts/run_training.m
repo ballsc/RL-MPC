@@ -12,7 +12,7 @@ assert(exist('env','var') == 1, 'Environment "env" is not defined.');
 
 %% Training Options
 trainOpts = rlTrainingOptions( ...
-    'MaxEpisodes', 1500, ...
+    'MaxEpisodes', 2000, ...
     'MaxStepsPerEpisode', 1000, ...
     'ScoreAveragingWindowLength', 20, ...
     'StopTrainingCriteria', 'AverageReward', ...
@@ -20,11 +20,11 @@ trainOpts = rlTrainingOptions( ...
     'Verbose', true, ...
     'Plots', 'training-progress');
 
-trainOpts.UseParallel = true;
+trainOpts.UseParallel = "on";
 trainOpts.ParallelizationOptions.Mode = 'async';
 
 %% Start Training
-trainingStats = train(a, env, trainOpts);
+train(a, env, trainOpts);
 
 %% Save Trained Agent
 delete(gcp('nocreate'));
@@ -33,7 +33,7 @@ filename = ['trainedAgent_' ...
     datestr(now, 'yyyymmdd_HHMMSS') '.mat'];
 
 % Save using MAT-file v7.3
-save(filename, 'a', 'trainingStats', '-v7.3');
+save(filename, 'a', 'env', '-v7.3');
 
 fprintf('Agent saved to: %s\n', filename);
 

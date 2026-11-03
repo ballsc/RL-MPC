@@ -14,7 +14,7 @@ simStepSize = 0.05;
 
 [initialPosition, initialAngle, scenario, max_time, initialVehicleVelocity] = ResetFunction();
 
-open("RL_Environments\"+model_name)
+open("RL_Environments\"+model_name);
 
-load("Agents\SAC_MPC_trained_Sang.mat")
+load("Agents\SAC_MPC_trained_Sang.mat");
 Simulink.ActorSimulation.load("BusActorPose");
