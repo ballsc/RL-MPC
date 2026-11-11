@@ -1,6 +1,6 @@
 % setup path
 addpath("Agents\", "Lane Scenarios\", "LCC\", "RL_Environments\", ...
          "Scripts\", "Scripts\Visualization\", "Plants\", "DataDictionaries\", ...
-         "Scripts\Initialization\")
+         "Scripts\Initialization\", "Scripts\evaluation\", "Lane Scenarios\evaluation\")
 
 Simulink.ActorSimulation.load("BusActorPose");
