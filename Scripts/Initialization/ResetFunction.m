@@ -8,21 +8,20 @@
 %
 function [initialPosition, initialAngle, scenario, max_time, initialVehicleVelocity] = ResetFunction()
     % set initial velocity between 25 and 35 mph
-    initialVehicleVelocity = 6.7*rand + 8.9;
+    % initialVehicleVelocity = 6.7*rand + 8.9;
+    initialVehicleVelocity = 8.9; % 25 mph
     
     % scenarios = {@small_OvalTrack, @large_OvalTrack, @longStraight, ...
     %             @multiCurv, @leftCurv, @rightCurv};
-    scenarios = {@large_OvalTrack, @leftCurv, @rightCurv}; % check timing
+    % scenarios = {@large_OvalTrack, @leftCurv, @rightCurv};
+    % scenarios = {@leftCurv, @rightCurv};
+    scenarios = {@large_OvalTrack};
 
     % find random scenario
     random_number = randi(numel(scenarios));
-    [scenario, roadCenters] = scenarios{random_number}();
+    [scenario, roadLength] = scenarios{random_number}();
     % get max_time
-    roadCenters = roadCenters(:, 1:2);
-    d = diff(roadCenters, 1, 1);
-    roadLength = sum(vecnorm(d, 2, 2));
-    % max_time = .9*roadLength/initialVehicleVelocity;
-    max_time = 30;
+    max_time = roadLength/initialVehicleVelocity;
 
     % get lanes
     lanes = getLanes(scenario);
@@ -46,11 +45,11 @@ function [initialPosition, initialAngle, scenario, max_time, initialVehicleVeloc
 
     % add noise to initial position/angle
     % position noise between -max_pos and max_pos units
-    max_pos = .5;
+    max_pos = 0;
     position_noise = [2*max_pos*rand - 1, 2*max_pos*rand - 1, 0];
     initialPosition = initialPosition + position_noise;
     % angle noise between -max_ang and max_ang degrees
-    max_ang = 1;
+    max_ang = 0;
     angle_noise = 2*max_ang*rand - max_ang;
     initialAngle = initialAngle + angle_noise;
 end

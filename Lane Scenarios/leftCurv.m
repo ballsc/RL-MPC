@@ -1,4 +1,4 @@
-function [scenario, roadCenters, sensor, allData] = leftCurv()
+function [scenario, road_length, sensor, allData] = leftCurv()
 %leftCurv - Returns sensor detections
 %    allData = leftCurv returns sensor detections in a structure
 %    with time for an internally defined scenario and sensor suite.
@@ -10,7 +10,7 @@ function [scenario, roadCenters, sensor, allData] = leftCurv()
 % Generated on: 18-Sep-2026 12:41:59
 
 % Create the drivingScenario object and ego car
-[scenario, roadCenters, egoVehicle] = createDrivingScenario;
+[scenario, road_length, egoVehicle] = createDrivingScenario;
 
 % Create all the sensors
 sensor = createSensor(scenario);
@@ -71,7 +71,7 @@ sensor = visionDetectionGenerator('SensorIndex', 1, ...
     'Intrinsics', cameraIntrinsics([800 799.999999999999],[320 240],[480 640]), ...
     'ActorProfiles', profiles);
 
-function [scenario, roadCenters, egoVehicle] = createDrivingScenario
+function [scenario, road_length, egoVehicle] = createDrivingScenario
 % createDrivingScenario Returns the drivingScenario defined in the Designer
 
 % Construct a drivingScenario object.
@@ -85,6 +85,8 @@ roadCenters = [-52 1.4 0;
 laneSpecification = lanespec(2);
 road(scenario, roadCenters, 'Lanes', laneSpecification, 'Name', 'Road');
 
+roadlength1 = sum(sqrt(sum(diff(roadCenters, 1, 1).^2, 2)));
+
 % Add the ego vehicle
 egoVehicle = vehicle(scenario, ...
     'ClassID', 1, ...
@@ -93,3 +95,4 @@ egoVehicle = vehicle(scenario, ...
     'PlotColor', [0.066 0.443 0.745], ...
     'Name', 'Car');
 
+road_length = 1.1*roadlength1;
