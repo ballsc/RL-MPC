@@ -9,12 +9,12 @@
 % initialAnggle - random angle corresponding to initialPosition
 % max_time - time until scenario will end, defaults to 100
 %
-model_name = "SAC_MPC_angle_reduced";
+model_name = "SAC_MPC_angle_reduced_policy";
 simStepSize = 0.05;
 
 [initialPosition, initialAngle, scenario, max_time, initialVehicleVelocity] = ResetFunction();
 
-open("RL_Environments\"+model_name);
+open(model_name);
 
-load("Agents\SAC_MPC_trained_Sang.mat");
+% load("Agents\SAC_MPC_trained_Sang.mat");
 Simulink.ActorSimulation.load("BusActorPose");

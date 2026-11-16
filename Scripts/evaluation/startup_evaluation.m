@@ -15,15 +15,16 @@ REDUCED_MODEL = 'SAC_MPC_angle_reduced';
 
 models = {FULL_MODEL, REDUCED_MODEL};
 
-scenarios = {@oval, @straight_left, @straight_left_multi ...
-    @straight_right, @straight_right_multi};
+% scenarios = {@oval, @straight_left, @straight_left_multi ...
+%     @straight_right, @straight_right_multi};
+scenarios = {@oval};
 
 [scenario, road_length] = scenarios{scenario_idx(1)}();
 initialVehicleVelocity = 8.9; %m/s -> 25mph
 
 % find initial position and pose of vehicle
-initialPosition = scenario.Actors(scenario_idx(2)).Position;
-initialYaw = scenario.Actors(scenario_idx(2)).Yaw;
+initialPosition = scenario.Actors(scenario_idx(1)).Position;
+initialYaw = scenario.Actors(scenario_idx(1)).Yaw;
 
 % find time to reach end of road
 max_time = road_length/initialVehicleVelocity;
