@@ -46,7 +46,8 @@ function [initialPosition, initialAngle, scenario, max_time, initialVehicleVeloc
     % add noise to initial position/angle
     % position noise between -max_pos and max_pos units
     max_pos = 1.1;
-    position_noise = [2*max_pos*rand - 1, 2*max_pos*rand - 1, 0];
+    position_noise = [2*max_pos*rand - max_pos, ...
+                      2*max_pos*rand - max_pos, 0];
     initialPosition = initialPosition + position_noise;
     % angle noise between -max_ang and max_ang degrees
     max_ang = 4;

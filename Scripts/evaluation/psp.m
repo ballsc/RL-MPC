@@ -8,7 +8,7 @@
 
 function Jpsp = psp(out, weights)
     % get weights
-    if sum(weights) == 1
+    if ~exist("weights", "var") || sum(weights) ~= 1
         w_a = 0.25;
         w_j = 0.25;
         w_d = 0.25;
@@ -26,7 +26,8 @@ function Jpsp = psp(out, weights)
     a_rms = rms(acc);
     jerk = out.lateralJerk;
     j_rms = rms(jerk);
-    steering_rate = diff(out.swAngleDeg);
+    swAngleDeg = out.swAngleDeg;
+    steering_rate = diff(swAngleDeg);
     s_rms = rms(steering_rate);
 
     % define lane proximity penalty
