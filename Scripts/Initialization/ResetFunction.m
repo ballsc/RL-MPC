@@ -21,7 +21,8 @@ function [initialPosition, initialAngle, scenario, max_time, initialVehicleVeloc
     random_number = randi(numel(scenarios));
     [scenario, roadLength] = scenarios{random_number}();
     % get max_time
-    max_time = roadLength/initialVehicleVelocity;
+    % max_time = roadLength/initialVehicleVelocity;
+    max_time = 390;
 
     % get lanes
     lanes = getLanes(scenario);
@@ -45,12 +46,12 @@ function [initialPosition, initialAngle, scenario, max_time, initialVehicleVeloc
 
     % add noise to initial position/angle
     % position noise between -max_pos and max_pos units
-    max_pos = 1.1;
+    max_pos = 1;
     position_noise = [2*max_pos*rand - max_pos, ...
                       2*max_pos*rand - max_pos, 0];
     initialPosition = initialPosition + position_noise;
     % angle noise between -max_ang and max_ang degrees
-    max_ang = 4;
+    max_ang = 5;
     angle_noise = 2*max_ang*rand - max_ang;
     initialAngle = initialAngle + angle_noise;
 end

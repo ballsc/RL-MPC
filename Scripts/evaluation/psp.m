@@ -32,7 +32,7 @@ function Jpsp = psp(out, weights)
 
     % define lane proximity penalty
     d_safe = .3; % meters, ~ 1 foot from centerline
-    p_lane = (1/numel(d_edge))*sum(max(0, d_safe - d_edge));
+    p_lane = (1/numel(d_edge))*sum(max(0, d_safe - abs(d_edge)));
 
     Jpsp = w_a*a_rms + w_j*j_rms + w_d*s_rms + w_l*p_lane;
 end
